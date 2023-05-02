@@ -5,9 +5,9 @@ public class Articulo {
     //Declaración de un enum para designar los tipo de iva
     public enum TipoIva{
 
-        general("general", 0,21),
-        reducido("reducido",0,10), 
-        subreducido("subreducido",0,8);
+        general("general", 0.21),
+        reducido("reducido",0.10), 
+        subreducido("subreducido",0.8);
 
         private String nombretipo;
         private double nd;
