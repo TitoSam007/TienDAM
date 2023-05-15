@@ -4,17 +4,17 @@ public class Lector {
     
     public static Scanner src = new Scanner(System.in);
 
-    public static String PideUnCadena(String txt) {
+    public static String pideUnCadena(String txt) {
         System.out.println(txt);
         return src.nextLine();
     }
 
-    public static int PideUnEntero(String txt) {
+    public static int pideUnEntero(String txt) {
         System.out.println(txt);
         return src.nextInt();
     }
 
-    public static double PideUnDecimal(String txt) {
+    public static double pideUnDecimal(String txt) {
         System.out.println(txt);
         return src.nextDouble();
     }

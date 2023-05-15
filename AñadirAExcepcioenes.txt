@@ -1,0 +1,14 @@
+ARticulo
+
+-setPrecio
+-void disminuir
+-void aumentar
+
+Almacen
+
+-quitar aritculo
+
+
+TienDam
+
+-Scanner's
