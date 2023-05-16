@@ -61,16 +61,16 @@ public class TienDAM {
                     iva = Lector.pideUnEntero("Introduzca el numero del tipo de iva del producto");
                     switch (iva) {
                         case 1:
-                        x = new Articulo(nombre, precio, cantidad, Articulo.TipoIva.general);
-                        Almacen.añadirArticulo(x);
+                            x = new Articulo(nombre, precio, cantidad, Articulo.TipoIva.general);
+                            Almacen.añadirArticulo(x);
                             break;
                         case 2:
-                        x = new Articulo(nombre, precio, cantidad, Articulo.TipoIva.reducido);
-                        Almacen.añadirArticulo(x);
+                            x = new Articulo(nombre, precio, cantidad, Articulo.TipoIva.reducido);
+                            Almacen.añadirArticulo(x);
                             break;
                         case 3:
-                        x = new Articulo(nombre, precio, cantidad, Articulo.TipoIva.subreducido);
-                        Almacen.añadirArticulo(x);
+                            x = new Articulo(nombre, precio, cantidad, Articulo.TipoIva.subreducido);
+                            Almacen.añadirArticulo(x);
                             break;
 
                         default:
@@ -78,18 +78,18 @@ public class TienDAM {
                     }
                     break;
                 case 3:
-                indice = Lector.pideUnEntero("Introdúzca el indice del artículo");
-                Almacen.quitarArticulo(indice);
+                    indice = Lector.pideUnEntero("Introdúzca el indice del artículo");
+                    Almacen.quitarArticulo(indice);
                     break;
                 case 4:
-                indice = Lector.pideUnEntero("Introdúzca el indice del artículo");
-                cantidad = Lector.pideUnEntero("Introduzca la cantidad que desea retirar del artículo");
-                Almacen.recibirCantidad(indice, cantidad);
+                    indice = Lector.pideUnEntero("Introdúzca el indice del artículo");
+                    cantidad = Lector.pideUnEntero("Introduzca la cantidad que desea retirar del artículo");
+                    Almacen.recibirCantidad(indice, cantidad);
                     break;
                 case 5:
-                indice = Lector.pideUnEntero("Introdúzca el indice del artículo");
-                cantidad = Lector.pideUnEntero("Introduzca la cantidad a devolver del artículo");
-                Almacen.devolverCantidad(indice, cantidad);
+                    indice = Lector.pideUnEntero("Introdúzca el indice del artículo");
+                    cantidad = Lector.pideUnEntero("Introduzca la cantidad a devolver del artículo");
+                    Almacen.devolverCantidad(indice, cantidad);
                     break;
 
                 default:
@@ -100,6 +100,40 @@ public class TienDAM {
     }
 
     public static void subMenu_Pedido() {
+        String nombre;
+        int opcion, id, cant;
 
+        do {
+            System.out.println("Menu de Pedido" + "\n" +
+                    "1 Crear pedido " + "\n" +
+                    "2 Añadir articulos " + "\n" +
+                    "3 Quitar articulos " + "\n" +
+                    "4 Modificar cantidad del artículo" + "\n" +
+                    "5 Salir");
+
+            opcion = Lector.pideUnEntero("Introduzca una de las opciones del menu");
+            switch (opcion) {
+                case 1:
+                nombre = Lector.pideUnCadena("Introduzca su nombre de cliente");
+                id = Lector.pideUnEntero("Introduzca la id del artículo a comprar");
+                cant = Lector.pideUnEntero("Introduzca la cantidad del artículo");
+
+                    Pedido.crearPedido(nombre, id, cant);
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+
+                    break;
+
+                default:
+                    break;
+            }
+
+        } while (opcion != 5);
     }
 }
