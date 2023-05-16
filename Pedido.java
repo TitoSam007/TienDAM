@@ -30,11 +30,11 @@ public class Pedido {
 
     public static void crearPedido (String n, int id, int cant){
 
-        añadirArticulos(id);
+        agregarArticulos(id);
         cantidadArtículo(cant, id);
     }
 
-    public static int añadirArticulos (int id){
+    public static int agregarArticulos (int id){
         
         if (Almacen.articulos.contains(id)) {
             for (int index = 0; index < Almacen.articulos.size(); index++) {
@@ -46,6 +46,18 @@ public class Pedido {
             System.out.println("Error, la id introducida no se ha encontrado");
         }
         return id;    
+    }
+
+    public static void quitarArticulos (int id){
+        if (Almacen.articulos.contains(id)) {
+            for (int index = 0; index < Almacen.articulos.size(); index++) {
+            if (index == id) {
+                idArticulos.remove(id);
+            }
+        }
+        } else {
+            System.out.println("Error, la id introducida no se ha encontrado");
+        }
     }
 
     public static boolean cantidadArtículo (int cant, int id){

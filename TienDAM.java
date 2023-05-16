@@ -1,5 +1,5 @@
 public class TienDAM {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         int opcion;
 
@@ -31,11 +31,12 @@ public class TienDAM {
                 "--------------------------");
     }
 
-    public static void subMenu_Almacen() {
+    public static void subMenu_Almacen() throws Exception {
         Articulo x;
         String nombre;
         double precio;
         int cantidad, iva, opcion, indice;
+        boolean leido;
         do {
             System.out.println("Menu de Almacen" + "\n" +
                     "-------------------" + "\n" +
@@ -62,15 +63,15 @@ public class TienDAM {
                     switch (iva) {
                         case 1:
                             x = new Articulo(nombre, precio, cantidad, Articulo.TipoIva.general);
-                            Almacen.añadirArticulo(x);
+                            Almacen.agregarArticulo(x);
                             break;
                         case 2:
                             x = new Articulo(nombre, precio, cantidad, Articulo.TipoIva.reducido);
-                            Almacen.añadirArticulo(x);
+                            Almacen.agregarArticulo(x);
                             break;
                         case 3:
                             x = new Articulo(nombre, precio, cantidad, Articulo.TipoIva.subreducido);
-                            Almacen.añadirArticulo(x);
+                            Almacen.agregarArticulo(x);
                             break;
 
                         default:
@@ -82,9 +83,14 @@ public class TienDAM {
                     Almacen.quitarArticulo(indice);
                     break;
                 case 4:
-                    indice = Lector.pideUnEntero("Introdúzca el indice del artículo");
-                    cantidad = Lector.pideUnEntero("Introduzca la cantidad que desea retirar del artículo");
-                    Almacen.recibirCantidad(indice, cantidad);
+                    try {
+                        indice = Lector.pideUnEntero("Introdúzca el indice del artículo");
+                        cantidad = Lector.pideUnEntero("Introduzca la cantidad que desea retirar del artículo");
+                        Almacen.recibirCantidad(indice, cantidad);
+                    } catch (Exception e) {
+                        System.out.println(
+                                "Error, la cantidad ha de ser mayor que cero y menor a la cantidad y existente");
+                    }
                     break;
                 case 5:
                     indice = Lector.pideUnEntero("Introdúzca el indice del artículo");
@@ -99,7 +105,7 @@ public class TienDAM {
 
     }
 
-    public static void subMenu_Pedido() {
+    public static void subMenu_Pedido() throws Exception {
         String nombre;
         int opcion, id, cant;
 
@@ -114,20 +120,24 @@ public class TienDAM {
             opcion = Lector.pideUnEntero("Introduzca una de las opciones del menu");
             switch (opcion) {
                 case 1:
-                nombre = Lector.pideUnCadena("Introduzca su nombre de cliente");
-                id = Lector.pideUnEntero("Introduzca la id del artículo a comprar");
-                cant = Lector.pideUnEntero("Introduzca la cantidad del artículo");
+                    nombre = Lector.pideUnCadena("Introduzca su nombre de cliente");
+                    id = Lector.pideUnEntero("Introduzca la id del artículo a comprar");
+                    cant = Lector.pideUnEntero("Introduzca la cantidad del artículo");
 
                     Pedido.crearPedido(nombre, id, cant);
                     break;
                 case 2:
-
+                    id = Lector.pideUnEntero("Introduzca la id del artículo");
+                    Pedido.agregarArticulos(id);
                     break;
                 case 3:
-
+                    id = Lector.pideUnEntero("Introduzca la id del artículo");
+                    Pedido.quitarArticulos(id);
                     break;
                 case 4:
-
+                    id = Lector.pideUnEntero("Introduzca el id del artículo");
+                    cant = Lector.pideUnEntero("Introduzca la cantida del artículo");
+                    Pedido.modificarCantidad(id, cant);
                     break;
 
                 default:

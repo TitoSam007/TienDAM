@@ -52,7 +52,7 @@ public class Almacen {
         }
     }
 
-    public static boolean añadirArticulo(Articulo atributos) {
+    public static boolean agregarArticulo(Articulo atributos) {
         articulos.add(atributos);
         return true;
 
@@ -85,7 +85,7 @@ public class Almacen {
 
     }
 
-    public static boolean recibirCantidad(int indice, int cant) {
+    public static boolean recibirCantidad(int indice, int cant) throws Exception{
 
         if (cant < 0) {
             System.out.println("ERROR, la cantidad a recibir debe ser mayor a cero");

@@ -61,25 +61,30 @@ public class Articulo {
     /*
      * Metodo set
      */
-    public void setPrecio(double precio){
-        if (precio > 0) {
-            this.precio = precio;
-        } else {
-            System.out.println("ERROR, debe introducir un val<or mayor a cero.");
+    public void setPrecio(double p) throws Exception{
+        if (p > 0) {
+            this.precio = p;
         }
+        else{
+            throw new Exception("ERROR, debe introducir un valor mayor a cero.");
+        }
+            
         
     }
 
     //Metodo que aumenta la cantidad de un articulo
     public static void aumentarCantidad(int cant){
-        cantidad += cant;
-    }
+            if (cant > 0) {
+                cantidad += cant;
+            }
 
-    //Metodo que disminuye la cantidad de una Articulo
+    }
+    //Metodo que disminuye la cantidad de una Artículo
     public static void disminuirCantidad(int cant){
-        cantidad -= cant;
+            if (cant > 0 || cant < Articulo.cantidad) {
+                cantidad -= cant;
+            }
     }
-
     //Declaración de un metodo de tipo String que imprime los atributos de la clase articulo.
     public String toString(){
         return "Nombre: " + this.nombre + "\n" + 
@@ -98,9 +103,4 @@ public class Articulo {
     public boolean exists(String nom) {
         return false;
     }
-
-    public void add(Articulo atributos) {
-    }
-
-
 }
